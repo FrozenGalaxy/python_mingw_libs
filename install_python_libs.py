@@ -166,12 +166,10 @@ else:
 		
 		
 		run_cmd("tar -xvf {0} Python-{1}/PC/pyconfig.h.in".format(filename,rc_ver))
-
-		run_cmd("mv pyconfig.h.in pyconfig.h")
 		
-		simplePatch("Python-{0}/PC/pyconfig.h".format(rc_ver),"#define hypot _hypot","#if (__GNUC__<6)\n#define hypot _hypot\n#endif")
+		simplePatch("Python-{0}/PC/pyconfig.h.in".format(rc_ver),"#define hypot _hypot","#if (__GNUC__<6)\n#define hypot _hypot\n#endif")
 		
-		run_cmd("mv Python-{0}/PC/pyconfig.h include/python3/".format(rc_ver))
+		run_cmd("mv Python-{0}/PC/pyconfig.h.in include/python3/pyconfig.h".format(rc_ver))
 		
 		
 		
