@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 # #################################################################################################################
 # Copyright (C) 2017 DeadSix27 (https://github.com/DeadSix27/python_mingw_libs)
@@ -165,7 +165,9 @@ else:
 		run_cmd("mv Python-{0}/Include include/python3".format(rc_ver))
 		
 		
-		run_cmd("tar -xvf {0} Python-{1}/PC/pyconfig.h".format(filename,rc_ver))
+		run_cmd("tar -xvf {0} Python-{1}/PC/pyconfig.h.in".format(filename,rc_ver))
+
+		run_cmd("mv pyconfig.h.in pyconfig.h")
 		
 		simplePatch("Python-{0}/PC/pyconfig.h".format(rc_ver),"#define hypot _hypot","#if (__GNUC__<6)\n#define hypot _hypot\n#endif")
 		
